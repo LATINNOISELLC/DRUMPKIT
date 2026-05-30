@@ -1,1 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>LEGIT DRUM KIT</title>
 
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #0f0f0f;
+  color: #eaeaea;
+}
+
+/* HEADER */
+.header {
+  text-align: center;
+  padding: 50px 20px 10px;
+}
+
+.header h1 {
+  font-size: 44px;
+  margin: 0;
+}
+
+.header p {
+  opacity: 0.6;
+  margin-top: 10px;
+}
+
+/* CREDITS */
+.credits {
+  margin-top: 10px;
+  font-size: 12px;
+  opacity: 0.55;
+}
+
+/* NOTICE */
+.notice {
+  margin-top: 15px;
+  display: inline-block;
+  padding: 10px 14px;
+  background: #1a1a1a;
+  border-radius: 8px;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+/* LAYOUT */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 20px;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+/* PRODUCT BOX */
+.card {
+  width: 540px;
+  height: 540px;
+  background: #1a1a1a;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #2a2a2a;
+  box-shadow: 0 25px 70px rgba(0,0,0,0.8);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* IMAGE FULL VIEW */
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #0f0f0f;
+}
+
+/* INFO */
+.info {
+  max-width: 420px;
+}
+
+.info h2 {
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.info p {
+  opacity: 0.75;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.features {
+  margin-top: 15px;
+  padding: 0;
+}
+
+.features li {
+  list-style: none;
+  margin: 6px 0;
+  opacity: 0.85;
+  font-size: 14px;
+}
+
+/* BUTTONS */
+.btn {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 12px 18px;
+  border-radius: 8px;
+  background: #2a2a2a;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  border: 1px solid #3a3a3a;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #333;
+}
+
+/* LOCKED */
+#download {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* TIMER */
+.timer {
+  margin-top: 12px;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 40px 20px;
+  opacity: 0.4;
+  font-size: 12px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <h1>LEGIT DRUM KIT</h1>
+  <p>Underground Trap / Drill Drum Library</p>
+
+  <div class="credits">
+    JEC BEATS • LATIN NOISE LLC • Artist: itsjblass
+  </div>
+
+  <div class="notice">
+    🔒 Subscribe to unlock download
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="card">
+    <img src="https://raw.githubusercontent.com/LATINNOISELLC/DRUMPKIT/main/ChatGPT%20Image%20May%2030%2C%202026%2C%2010_40_15%20AM.png">
+  </div>
+
+  <div class="info">
+    <h2>Premium Drum Kit Pack</h2>
+    <p>Underground trap & drill drum kit built for industry-level beats.</p>
+
+    <ul class="features">
+      <li>• 808s (Clean + Distorted)</li>
+      <li>• Kicks & Claps</li>
+      <li>• Hi-Hats & Percs</li>
+      <li>• FX & Transitions</li>
+    </ul>
+
+    <a class="btn" id="subscribeBtn"
+       target="_blank"
+       href="https://www.youtube.com/@Latin-Noise-LLC">
+      Subscribe on YouTube
+    </a>
+
+    <div class="timer" id="timerText"></div>
+
+    <a class="btn" id="download">Download Locked</a>
+  </div>
+
+</div>
+
+<div class="footer">
+  © LEGIT DRUM KIT • JEC BEATS • LATIN NOISE LLC • itsjblass
+</div>
+
+<script>
+let unlocked = false;
+
+document.getElementById("subscribeBtn").addEventListener("click", () => {
+  if (unlocked) return;
+
+  let timeLeft = 10;
+  const timerText = document.getElementById("timerText");
+
+  timerText.innerText = "Unlocking download in 10 seconds...";
+
+  const countdown = setInterval(() => {
+    timeLeft--;
+    timerText.innerText = "Unlocking download in " + timeLeft + "s...";
+
+    if (timeLeft <= 0) {
+      clearInterval(countdown);
+
+      const dl = document.getElementById("download");
+      dl.innerText = "Download Unlocked";
+      dl.href = "https://github.com/LATINNOISELLC/DRUMPKIT";
+      dl.style.opacity = "1";
+      dl.style.pointerEvents = "auto";
+
+      timerText.innerText = "Unlocked!";
+      unlocked = true;
+    }
+  }, 1000);
